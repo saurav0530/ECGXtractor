@@ -65,8 +65,7 @@ for k, v in tqdm.tqdm(dict_r_peaks.items()):
     if consecutive_heartbeats < 0:
         cons_segments = [segments]
     else:
-        cons_segments = [segments[i:i + consecutive_heartbeats] for i in range(0, len(segments) -
-                                                                   consecutive_heartbeats + 1, consecutive_heartbeats)]
+        cons_segments = [segments[i:i + consecutive_heartbeats] for i in range(0, len(segments) - consecutive_heartbeats + 1, consecutive_heartbeats)]
 
     for i, sn in tqdm.tqdm(enumerate(cons_segments)):
         if not consecutive_heartbeats == 1:

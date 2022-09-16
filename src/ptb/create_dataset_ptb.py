@@ -35,8 +35,7 @@ def get_peaks(pats):
         sessions = [name for name in os.listdir(path) if not os.path.isfile(os.path.join(path, name))]
         for s in sessions:
             path_session = base_path + p + "/" + s
-            peaks = [s + '/' + name for name in os.listdir(path_session) if
-                     os.path.isfile(os.path.join(path_session, name))]
+            peaks = [s + '/' + name for name in os.listdir(path_session) if os.path.isfile(os.path.join(path_session, name))]
             dict_peaks[p][s] = peaks
     return dict_peaks
 

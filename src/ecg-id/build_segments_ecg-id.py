@@ -8,7 +8,7 @@ import json
 
 segment_back = 160
 segment_length = 400
-consecutive_heartbeats = 6  # -1 for template, 1 for single hb, otherwise specify the length of cons. blocks (es. 10)
+consecutive_heartbeats = 1  # -1 for template, 1 for single hb, otherwise specify the length of cons. blocks (es. 10)
 best_number = 5  # default 5
 base_path = "datasets/ecg-id/preproc_csv"
 base_path_segment = "datasets/ecg-id"
@@ -31,16 +31,16 @@ class NumpyEncoder(json.JSONEncoder):
 
 def build_advanced_segment(sn, best_n):
     import operator
-    avg_segment = np.mean(sn, axis=0)
+    # avg_segment = np.mean(sn, axis=0)
 
-    distance = [np.linalg.norm(s - avg_segment) for s in sn]
-    idx_distance = list(enumerate(distance))
-    top_n = [t[0] for t in sorted(idx_distance, key=operator.itemgetter(1))[:best_n]]
+    # distance = [np.linalg.norm(s - avg_segment) for s in sn]
+    # idx_distance = list(enumerate(distance))
+    # top_n = [t[0] for t in sorted(idx_distance, key=operator.itemgetter(1))[:best_n]]
 
-    segments_selected = [s for i, s in enumerate(sn) if i in top_n]
-    result = np.mean(segments_selected, axis=0)
+    # segments_selected = [s for i, s in enumerate(sn) if i in top_n]
+    # result = np.mean(segments_selected, axis=0)
 
-    return result
+    return sn[0]
 
 
 with open("datasets/ecg-id/r_peaks.json", 'r') as fid:
@@ -75,5 +75,5 @@ for k, v in tqdm.tqdm(dict_r_peaks.items()):
             result = sn[0]
         df = pd.DataFrame(result)
         word = 'template' if consecutive_heartbeats < 0 else 'hb' if consecutive_heartbeats == 1 else 'ss'
-        df.to_csv(base_path_segment + "/" + patient + "/" + sample + "/" + word + "_" +
+        df.to_csv(base_path_segment + "/" + patient + "/" + sample + "/ss_" +
                   "{:03n}".format(i) + ".csv", index=False, header=False)

@@ -4,7 +4,7 @@
     "output_keys_json": ["ecg"],
 
     "__comment": "data path and format",
-    "data_path": [""],
+    "data_path": ["datasets/ecg-id"],
     "train": "",
     "val": "",
     "generator": true,

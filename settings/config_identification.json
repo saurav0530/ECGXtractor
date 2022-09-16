@@ -4,15 +4,15 @@
     "output_keys_json": ["usercode"],
 
     "__comment": "data path and format",
-    "data_path": ["datasets/ptb"],
-    "train": "datasets/train_multi_single_identification.json",
-    "val": "datasets/val_multi_single_identification.json",
+    "data_path": ["datasets/ecg-id"],
+    "train": "datasets/train_ecg-id_multi_identification.json",
+    "val": "datasets/val_ecg-id_multi_identification.json",
     "generator": true,
     "parallel": true,
     "lead_i": false,
 
     "__comment": "architecture",
-    "initial_weights": "saved/1640784719-130_12L-Siamese/0.040-0.988-020-0.048-0.984.hdf5",
+    "initial_weights": "",
     "individuals": 113,
     "resample_max": true,
 
@@ -44,5 +44,5 @@
     "base_save_dir": "saved",
 
     "__comment": "test",
-    "test": "datasets/test_multi_single_identification.json"
+    "test": "datasets/test_ecg-id_multi_identification.json"
 }

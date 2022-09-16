@@ -135,6 +135,7 @@ def do_everything(keyword, sessions, split_pct, mode, ds_filename):
     kept_peaks = keep_peaks_sessions(peaks, sessions, mode == 'verification')
     train_ds, val_ds, test_ds = create_ds(kept_peaks, split_pct, mode)
     # pass
+    print(train_ds)
     for ds, fn in zip([train_ds, val_ds, test_ds], [name + '_' + ds_filename for name in ['train', 'val', 'test']]):
         if len(ds) > 0:
             write_json(ds, fn)

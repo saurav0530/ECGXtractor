@@ -47,11 +47,11 @@ for i=1:length(list)
     data = data(:, [1:12]);
     new_data = zeros(5000, 12);
     for j = 1:12
-        d = table2array(data(1:5000, j));  % d contains the original signal to filter
-        z = zeros(10000,1); % z is a support to remove the filter delay
+        d = table2array(data(1:5000, j));   % d contains the original signal to filter
+        z = zeros(10000,1);                 % z is a support to remove the filter delay
         
         % add pre and post signal
-        sup_len = 1000;  % length of the pre and post signals
+        sup_len = 1000;                     % length of the pre and post signals
         z2 = zeros(sup_len, 1);
         %d_pre = 2*d(1) - flipud(d(2:sup_len+1));
         %d_post = 2*d(end) - flipud(d(end-sup_len:end-1));
@@ -60,7 +60,7 @@ for i=1:length(list)
         d2 = [d_pre;d;d_post];
         z = d(end) + z;
         z(1:7000, :) = d2;
-        d2 = z;  % d2 contains the modified signal to filter
+        d2 = z;                             % d2 contains the modified signal to filter
         
         temp_d = BP(d2);
         temp_d = HP(temp_d);
